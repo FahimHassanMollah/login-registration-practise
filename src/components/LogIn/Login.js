@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { loginAction } from '../../redux/actions/AuthAction';
 
 const Login = () => {
     const loginDispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const history=useHistory();
 
-    const  login =async (e) => {
+    const  login = (e) => {
         e.preventDefault();
-        loginDispatch(loginAction({email,password}))
+        loginDispatch(loginAction({email,password},history))
         
     }
     return (
