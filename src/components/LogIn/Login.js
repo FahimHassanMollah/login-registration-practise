@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { loginAction } from '../../redux/actions/AuthAction';
 
 const Login = () => {
+    const loginDispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const login = (e) => {
+
+    const  login =async (e) => {
         e.preventDefault();
-        console.log(email,password);
+        loginDispatch(loginAction({email,password}))
+        
     }
     return (
         <div className="" style={{ textAlign: "center" }}>
